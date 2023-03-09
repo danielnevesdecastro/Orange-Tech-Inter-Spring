@@ -3,14 +3,17 @@ package dio.aulaspringdatajpa.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "tab_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)//gerando Id do banco de forma automatica
     @Column(name = "user_id")
     private Integer id;
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false)//tamanho maximo do campo , e vetando null
     private String name;
+    @Column(length = 20, nullable = false)
     private String username;
+    @Column(length = 100, nullable = false)
     private String passwod;
 
     public String getName() {
@@ -35,5 +38,15 @@ public class User {
 
     public void setPasswod(String passwod) {
         this.passwod = passwod;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", passwod='" + passwod + '\'' +
+                '}';
     }
 }
